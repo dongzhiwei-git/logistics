@@ -1,4 +1,4 @@
-module logistics
+module inherited
 
 go 1.17
 

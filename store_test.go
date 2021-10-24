@@ -14,13 +14,22 @@ func TestGetStoreInfo(t *testing.T){
 		return
 	}
 
-	store := new(services.Store)
-	storeInfo, err := store.GetStoreInfo()
+	sysuser := new(services.SysUser)
+	sysuserInfo, err := sysuser.GetSysUserInfo()
 	if err != nil {
 		fmt.Printf("[api.GetStoreInfo], err: %v", err)
 
 		return
 	}
 
-	fmt.Println(storeInfo)
+	fmt.Println(sysuserInfo)
+	//store := new(services.Store)
+	//storeInfo, err := store.GetStoreInfo()
+	//if err != nil {
+	//	fmt.Printf("[api.GetStoreInfo], err: %v", err)
+	//
+	//	return
+	//}
+	//
+	//fmt.Println(storeInfo)
 }
