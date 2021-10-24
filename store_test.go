@@ -14,6 +14,7 @@ func TestGetStoreInfo(t *testing.T){
 		return
 	}
 
+
 	store := new(services.Store)
 	storeInfo, err := store.GetStoreInfo()
 	if err != nil {
