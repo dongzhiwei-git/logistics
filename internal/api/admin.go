@@ -61,7 +61,8 @@ func GetStoreInfo(ctx *gin.Context){
 
 	fmt.Println(storeInfo)
 	ctx.JSON(http.StatusOK, gin.H{
-		"date": "success",
+		"status": "success",
+		"date" : storeInfo,
 	})
 
 	return
