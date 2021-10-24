@@ -22,5 +22,5 @@ func TestGetStoreInfo(t *testing.T){
 		return
 	}
 
-	fmt.Println(string(storeInfo))
+	fmt.Println(storeInfo)
 }
