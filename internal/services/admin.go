@@ -20,3 +20,5 @@ func (s *SysUser) CreateSysUser(name, password string) (err error) {
 
 	return
 }
+
+

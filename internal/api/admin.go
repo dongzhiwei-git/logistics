@@ -17,6 +17,8 @@ func CreateAdminUser(ctx *gin.Context) {
 	err := ctx.BindJSON(&adminUser)
 	if err != nil {
 		fmt.Printf("[api.CreateAdminUser], Parameter parsing error")
+
+		return
 	}
 
 	userName := adminUser.UserName
