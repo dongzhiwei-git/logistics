@@ -31,10 +31,6 @@ func InitRouter() {
 		admin.GET("/get-store-info", api.GetStoreInfo)
 	}
 
-
-
-
-
 	// setup listen
 	err := r.Run(":8000")
 	if err != nil {
