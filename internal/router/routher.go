@@ -34,7 +34,7 @@ func InitRouter() {
 	// setup listen
 	err := r.Run(":8000")
 	if err != nil {
-		fmt.Printf("run failed: %v\n", err)
+		fmt.Printf("run.sh failed: %v\n", err)
 		return
 
 	}
