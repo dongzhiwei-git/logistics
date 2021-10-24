@@ -41,3 +41,7 @@ func CreateAdminUser(ctx *gin.Context) {
 
 	return
 }
+
+func GetStoreInfo(ctx *gin.Context){
+
+}

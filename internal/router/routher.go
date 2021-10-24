@@ -8,6 +8,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var(
+	admin *gin.RouterGroup
+	store *gin.RouterGroup
+
+)
+
 func InitRouter() {
 	var r *gin.Engine
 	r = gin.Default()
@@ -17,10 +23,17 @@ func InitRouter() {
 		ctx.JSON(http.StatusOK, nil)
 	})
 
-	var admin = r.Group("/admin")
+	// 管理员相关
+	admin = r.Group("/admin")
 	{
 		admin.POST("/reg", api.CreateAdminUser)
+		// 仓库配送到分仓库
+		admin.GET("/get-store-info", api.GetStoreInfo)
 	}
+
+
+
+
 
 	// setup listen
 	err := r.Run(":8000")
