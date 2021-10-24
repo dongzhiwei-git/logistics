@@ -9,9 +9,9 @@ type Center struct {
 
 }
 
-func (cen *Center) GetSysUserInfo() (sysUser *models.SysUser, err error) {
-	sysUserInfo := new(models.SysUser)
-	err = dao.Orm.Find(sysUserInfo).Error
+func (cen *Center) GetCenterInfo() (sysUser *models.CenterInfo, err error) {
+	centerInfo := new(models.CenterInfo)
+	err = dao.Orm.Find(centerInfo).Error
 
-	return sysUserInfo, err
+	return centerInfo, err
 }

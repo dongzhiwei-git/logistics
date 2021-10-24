@@ -68,3 +68,27 @@ func GetStoreInfo(ctx *gin.Context){
 
 	return
 }
+
+func GetCenterInfo(ctx *gin.Context){
+	//Parameter parsing
+	info := models.CenterInfo{}
+	err := ctx.BindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], Parameter parsing error")
+	}
+
+	center := new(services.Center)
+	centerInfo, err := center.GetCenterInfo()
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(centerInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"date": "success",
+	})
+
+	return
+}
