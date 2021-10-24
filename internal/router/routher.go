@@ -32,10 +32,6 @@ func InitRouter() {
 		admin.GET("/get-center-info", api.GetCenterInfo)
 	}
 
-
-
-
-
 	// setup listen
 	err := r.Run(":8000")
 	if err != nil {
