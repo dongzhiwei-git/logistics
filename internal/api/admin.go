@@ -42,6 +42,27 @@ func CreateAdminUser(ctx *gin.Context) {
 	return
 }
 
+// 总仓到分仓info
 func GetStoreInfo(ctx *gin.Context){
+	//Parameter parsing
+	info := models.StoreInfo{}
+	err := ctx.BindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], Parameter parsing error")
+	}
 
+	store := new(services.Store)
+	storeInfo, err := store.GetStoreInfo()
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(storeInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"date": "success",
+	})
+
+	return
 }
