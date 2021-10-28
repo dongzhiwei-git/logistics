@@ -97,7 +97,7 @@ CREATE TABLE `center_to_customer`
 (
     `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `number`       varchar(30)         NOT NULL DEFAULT '' COMMENT '编号',
-    `user_name`    varchar(30)         NOT NULL DEFAULT '' COMMENT '客户名称',
+    `area`    varchar(30)         NOT NULL DEFAULT '' COMMENT '所属区域',
     `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '产品名称',
     `need_sum`     bigint(20)          NOT NULL COMMENT '需求数量',
     `product_type` char(6)             NOT NULL DEFAULT '' COMMENT '需求类型',
