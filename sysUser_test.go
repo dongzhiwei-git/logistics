@@ -21,6 +21,19 @@ func TestCreateSysUser(t *testing.T) {
 
 }
 
-func TestUser(t *testing.T) {
-	fmt.Println("er")
+func TestGetSysInfo(t *testing.T){
+	if err := internal.Init(); err != nil {
+		log.Println("Init failed." + err.Error())
+		return
+	}
+
+	sysUser := new(services.SysUser)
+	sysUserInfo, err := sysUser.GetSysUserInfo()
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(sysUserInfo)
 }

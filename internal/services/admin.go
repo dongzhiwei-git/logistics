@@ -20,3 +20,11 @@ func (s *SysUser) CreateSysUser(name, password string) (err error) {
 
 	return
 }
+func (s *SysUser) GetSysUserInfo() (store *models.SysUser, err error) {
+	sysUserInfo := new(models.SysUser)
+	err = dao.Orm.Find(sysUserInfo).Error
+
+	return sysUserInfo, err
+}
+
+

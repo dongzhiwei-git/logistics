@@ -17,6 +17,8 @@ func CreateAdminUser(ctx *gin.Context) {
 	err := ctx.BindJSON(&adminUser)
 	if err != nil {
 		fmt.Printf("[api.CreateAdminUser], Parameter parsing error")
+
+		return
 	}
 
 	userName := adminUser.UserName
@@ -63,6 +65,31 @@ func GetStoreInfo(ctx *gin.Context){
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": "success",
 		"date" : storeInfo,
+	})
+
+	return
+}
+
+func GetCenterInfo(ctx *gin.Context){
+	//Parameter parsing
+	info := models.CenterInfo{}
+	err := ctx.BindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetCenterInfo], Parameter parsing error")
+	}
+
+	center := new(services.Center)
+	centerInfo, err := center.GetCenterInfo()
+	if err != nil {
+		fmt.Printf("[api.GetCenterInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(centerInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"date" : centerInfo,
 	})
 
 	return
