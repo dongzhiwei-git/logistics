@@ -1,2 +1,5 @@
-.gitignore
 .idea
+data.xlsx
+go.mod
+.gitignore
+script/*

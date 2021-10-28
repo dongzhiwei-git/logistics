@@ -45,7 +45,7 @@ func CreateAdminUser(ctx *gin.Context) {
 }
 
 // 总仓到分仓info
-func GetStoreInfo(ctx *gin.Context){
+func GetStoreInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.StoreInfo{}
 	err := ctx.BindJSON(&info)
@@ -64,13 +64,13 @@ func GetStoreInfo(ctx *gin.Context){
 	fmt.Println(storeInfo)
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": "success",
-		"date" : storeInfo,
+		"date":   storeInfo,
 	})
 
 	return
 }
 
-func GetCenterInfo(ctx *gin.Context){
+func GetCenterInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.CenterInfo{}
 	err := ctx.BindJSON(&info)
@@ -89,7 +89,7 @@ func GetCenterInfo(ctx *gin.Context){
 	fmt.Println(centerInfo)
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": "success",
-		"date" : centerInfo,
+		"date":   centerInfo,
 	})
 
 	return
