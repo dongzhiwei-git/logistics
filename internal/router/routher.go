@@ -8,10 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var(
+var (
 	admin *gin.RouterGroup
 	store *gin.RouterGroup
-
 )
 
 func InitRouter() {
@@ -33,7 +32,7 @@ func InitRouter() {
 	}
 
 	// setup listen
-	err := r.Run(":8000")
+	err := r.Run(":26666")
 	if err != nil {
 		fmt.Printf("run.sh failed: %v\n", err)
 		return
