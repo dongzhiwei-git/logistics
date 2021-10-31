@@ -48,7 +48,7 @@ func CreateAdminUser(ctx *gin.Context) {
 func GetStoreInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.StoreInfo{}
-	err := ctx.BindJSON(&info)
+	err := ctx.ShouldBind(&info)
 	if err != nil {
 		fmt.Printf("[api.GetStoreInfo], Parameter parsing error")
 	}
@@ -73,7 +73,7 @@ func GetStoreInfo(ctx *gin.Context) {
 func GetCenterInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.CenterInfo{}
-	err := ctx.BindJSON(&info)
+	err := ctx.ShouldBindJSON(&info)
 	if err != nil {
 		fmt.Printf("[api.GetCenterInfo], Parameter parsing error")
 	}
