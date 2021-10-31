@@ -20,8 +20,8 @@ func Init() {
 }
 func main() {
 	Init()
-	storeSql()
-
+	//storeSql()
+	input()
 }
 
 func storeSql() {
@@ -74,6 +74,37 @@ func center() {
 
 	center := new(services.Center)
 	err = center.CreateCenterInfo(data)
+	if err != nil {
+		fmt.Println(err, 123)
+	}
+	fmt.Println(data)
+}
+
+// 入库表
+func input() {
+	f, err := excelize.OpenFile("data.xlsx")
+	if err != nil {
+		println(err.Error())
+		fmt.Println("er")
+		return
+	}
+	data := make([]models.Input, 4)
+	rows, err := f.GetRows("采购页面")
+	for i, row := range rows {
+		fmt.Println("i", i)
+		data[i].Id = i + 1
+		data[i].Area = row[0]
+		data[i].ProductName = row[1]
+		NeedNum, _ := strconv.Atoi(row[2])
+		data[i].OrderSum = NeedNum
+		LeftSum, _ := strconv.Atoi(row[3])
+		data[i].LeftSum = LeftSum
+		data[i].PurchaseLevel = row[4]
+	}
+	println()
+
+	center := new(services.Input)
+	err = center.CreateInputInfo(data)
 	if err != nil {
 		fmt.Println(err, 123)
 	}
