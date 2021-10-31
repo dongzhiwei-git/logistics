@@ -105,3 +105,17 @@ CREATE TABLE `center_to_customer`
     UNIQUE KEY `uk_number` (`number`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='分仓到客户';
+
+CREATE TABLE `purchase`
+
+(
+    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `area` varchar(30) NOT NULL DEFAULT '' COMMENT '所属区域',
+    `product_name` varchar(20) NOT NULL DEFAULT '' COMMENT '备件名称',
+    `order_sum` int unsigned NOT NULL COMMENT '订货数量',
+    `left_sum` int unsigned NOT NULL  COMMENT '剩余库存',
+    `purchase_level` varchar(6) NOT NULL  DEFAULT '' COMMENT '采购预警',
+    PRIMARY KEY (`id`)
+)ENGINE = InnoDB
+ DEFAULT CHARSET = utf8mb4 COMMENT ='入库表';
+

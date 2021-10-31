@@ -44,11 +44,11 @@ func CreateAdminUser(ctx *gin.Context) {
 	return
 }
 
-// GetStoreInfo 总仓到分仓info
-func GetStoreInfo(ctx *gin.Context){
+// 总仓到分仓info
+func GetStoreInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.StoreInfo{}
-	err := ctx.BindJSON(&info)
+	err := ctx.ShouldBind(&info)
 	if err != nil {
 		fmt.Printf("[api.GetStoreInfo], Parameter parsing error")
 	}
@@ -64,16 +64,16 @@ func GetStoreInfo(ctx *gin.Context){
 	fmt.Println(storeInfo)
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": "success",
-		"date" : storeInfo,
+		"date":   storeInfo,
 	})
 
 	return
 }
 
-func GetCenterInfo(ctx *gin.Context){
+func GetCenterInfo(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.CenterInfo{}
-	err := ctx.BindJSON(&info)
+	err := ctx.ShouldBindJSON(&info)
 	if err != nil {
 		fmt.Printf("[api.GetCenterInfo], Parameter parsing error")
 	}
@@ -89,7 +89,7 @@ func GetCenterInfo(ctx *gin.Context){
 	fmt.Println(centerInfo)
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": "success",
-		"date" : centerInfo,
+		"date":   centerInfo,
 	})
 
 	return
