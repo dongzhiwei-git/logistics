@@ -44,7 +44,7 @@ func CreateAdminUser(ctx *gin.Context) {
 	return
 }
 
-// 总仓到分仓info
+// GetStoreInfo 总仓到分仓info
 func GetStoreInfo(ctx *gin.Context){
 	//Parameter parsing
 	info := models.StoreInfo{}
