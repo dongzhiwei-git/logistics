@@ -20,7 +20,7 @@ func Init() {
 }
 func main() {
 	Init()
-	center()
+	storeSql()
 
 }
 
@@ -33,7 +33,7 @@ func storeSql() {
 	}
 	data := make([]models.StoreInfo, 4)
 
-	rows, err := f.GetRows("中心到用户")
+	rows, err := f.GetRows("总仓到配送中心")
 	for i, row := range rows {
 		fmt.Println("i", i)
 		data[i].Id = i + 1
