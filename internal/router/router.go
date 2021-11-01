@@ -31,6 +31,7 @@ func InitRouter() {
 		// 仓库配送到分仓库
 		admin.GET("/get-store-info", api.GetStoreInfo)
 		admin.GET("/get-center-info", api.GetCenterInfo)
+		admin.GET("/get-input-info", api.GetInputInfo)
 	}
 
 	// setup listen
