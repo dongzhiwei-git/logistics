@@ -19,14 +19,14 @@ func Init() {
 
 }
 
-func main() {
-	Init()
-	//storeSql()
-	//input()
-	//output()
-	vehicle()
-
-}
+//func main() {
+//	Init()
+//	//storeSql()
+//	//input()
+//	output()
+//	//vehicle()
+//
+//}
 
 func storeSql() {
 	f, err := excelize.OpenFile("data.xlsx")
@@ -124,10 +124,10 @@ func output() {
 		return
 	}
 	data := make([]models.Output, 4)
-	rows, err := f.GetRows("采购页面")
+	rows, err := f.GetRows("物流端")
 	for i, row := range rows {
 		fmt.Println("i", i)
-		data[i].Id = i + 1
+		data[i].Id = i
 		data[i].ProductName = row[0]
 		data[i].OrderNum = row[1]
 		orderSum, _ := strconv.Atoi(row[2])
@@ -135,8 +135,7 @@ func output() {
 		data[i].OrderNum = row[3]
 		data[i].OrderCustomerID = row[4]
 		data[i].ToArea = row[5]
-		ArriveTime, _ := strconv.Atoi(row[6])
-		data[i].ArriveTime = ArriveTime
+		data[i].ArriveTime = row[6]
 		data[i].TradeStatus = row[7]
 	}
 	println()

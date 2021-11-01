@@ -129,22 +129,23 @@ CREATE TABLE `out`
     `order_customer`    varchar(30)         NOT NULL DEFAULT '' COMMENT '订货客户',
     `order_customer_id` varchar(20)         NOT NULL DEFAULT '' COMMENT '客户ID',
     `to_area`           varchar(20)         NOT NULL DEFAULT '' COMMENT '配送地区',
+    `arrive_time`       varchar(20)         NOT NULL DEFAULT '' COMMENT '抵达时间',
     `trade_status`      varchar(6)          NOT NULL DEFAULT '' COMMENT '交易状态',
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_order_num` (`order_num`)
-)ENGINE = InnoDB
- DEFAULT CHARSET = utf8mb4 COMMENT ='出库表';
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='出库表';
 
 #  车辆表
 CREATE TABLE `vehicle`
 (
-    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `vehicle_num` varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆编号',
+    `id`                 bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `vehicle_num`        varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆编号',
     `vi_sever_condition` varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆使用情况',
-    `vi_position` varchar(30)         NOT NULL DEFAULT '' COMMENT '所处位置',
-    `vi_load_weight` varchar(30)         NOT NULL DEFAULT '' COMMENT '载货量',
-    `vi_transit_value` varchar(30)         NOT NULL DEFAULT '' COMMENT '运输成本',
+    `vi_position`        varchar(30)         NOT NULL DEFAULT '' COMMENT '所处位置',
+    `vi_load_weight`     varchar(30)         NOT NULL DEFAULT '' COMMENT '载货量',
+    `vi_transit_value`   varchar(30)         NOT NULL DEFAULT '' COMMENT '运输成本',
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_vehicle_num` (`vehicle_num`)
-)ENGINE = InnoDB
- DEFAULT CHARSET = utf8mb4 COMMENT ='车辆表';
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='车辆表';

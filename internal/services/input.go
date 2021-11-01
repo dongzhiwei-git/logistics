@@ -19,7 +19,7 @@ func (in *Input) CreateInputInfo(allInput []models.Input) (err error) {
 }
 
 // 查入库info
-func (s *Input) GetInputInfo() (store *[]models.Input, err error) {
+func (in *Input) GetInputInfo() (store *[]models.Input, err error) {
 	inputInfo := new([]models.Input)
 	err = dao.Orm.Find(inputInfo).Error
 	//info, err := json.Marshal(storeInfo)

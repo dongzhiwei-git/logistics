@@ -121,4 +121,28 @@ func GetInputInfo(ctx *gin.Context) {
 	return
 }
 
+// 得到出库表info
+func GetOutputInfo(ctx *gin.Context) {
+	//Parameter parsing
+	info := models.Output{}
+	err := ctx.ShouldBindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error")
+	}
 
+	output := new(services.Output)
+	outputInfo, err := output.GetOutputInfo()
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(outputInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"date":   outputInfo,
+	})
+
+	return
+}
