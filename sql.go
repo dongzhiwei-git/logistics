@@ -18,11 +18,12 @@ func Init() {
 	}
 
 }
-func main() {
-	Init()
-	//storeSql()
-	input()
-}
+
+//func main() {
+//	Init()
+//	//storeSql()
+//	input()
+//}
 
 func storeSql() {
 	f, err := excelize.OpenFile("data.xlsx")
