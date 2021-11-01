@@ -7,8 +7,9 @@ type Output struct {
 	OrderSum        int    `gorm:"order_sum" json:"order_sum" from:"order_sum"`
 	OrderCustomer   string `gorm:"order_customer" json:"order_customer" form:"order_customer"`
 	OrderCustomerID string `gorm:"order_customer_id" json:"order_customer_id" form:"order_customer_id"`
-	ToArea          string `gorm:"to_area" json:"to_area" from:"to_area"`
-	TradeStatus     string `gorm:"trade_status" json:"trade_status" from:"trade_status"`
+	ToArea          string `gorm:"to_area" json:"to_area" form:"to_area"`
+	ArriveTime      int    `gorm:"arrive_time" json:"arrive_time" form:"arrive_time"`
+	TradeStatus     string `gorm:"trade_status" json:"trade_status" form:"trade_status"`
 }
 
 func (Output) TableName() string {

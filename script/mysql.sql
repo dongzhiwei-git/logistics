@@ -134,3 +134,17 @@ CREATE TABLE `out`
     UNIQUE KEY `uk_order_num` (`order_num`)
 )ENGINE = InnoDB
  DEFAULT CHARSET = utf8mb4 COMMENT ='出库表';
+
+#  车辆表
+CREATE TABLE `vehicle`
+(
+    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `vehicle_num` varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆编号',
+    `vi_sever_condition` varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆使用情况',
+    `vi_position` varchar(30)         NOT NULL DEFAULT '' COMMENT '所处位置',
+    `vi_load_weight` varchar(30)         NOT NULL DEFAULT '' COMMENT '载货量',
+    `vi_transit_value` varchar(30)         NOT NULL DEFAULT '' COMMENT '运输成本',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_vehicle_num` (`vehicle_num`)
+)ENGINE = InnoDB
+ DEFAULT CHARSET = utf8mb4 COMMENT ='车辆表';
