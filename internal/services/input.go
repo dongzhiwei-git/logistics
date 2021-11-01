@@ -16,3 +16,4 @@ func (in *Input) CreateInputInfo(allInput []models.Input) (err error) {
 
 	return err
 }
+
