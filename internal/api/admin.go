@@ -95,4 +95,30 @@ func GetCenterInfo(ctx *gin.Context) {
 	return
 }
 
+// 得到入库表info
+func GetInputInfo(ctx *gin.Context) {
+	//Parameter parsing
+	info := models.Input{}
+	err := ctx.ShouldBindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetInputInfo], Parameter parsing error")
+	}
+
+	input := new(services.Input)
+	inputInfo, err := input.GetInputInfo()
+	if err != nil {
+		fmt.Printf("[api.GetInputInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(inputInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"date":   inputInfo,
+	})
+
+	return
+}
+
 

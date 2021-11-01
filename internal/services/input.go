@@ -3,6 +3,7 @@ package services
 import (
 	"inherited/internal/dao"
 	"inherited/internal/models"
+	"log"
 )
 
 type Input struct {
@@ -17,3 +18,14 @@ func (in *Input) CreateInputInfo(allInput []models.Input) (err error) {
 	return err
 }
 
+// 查入库info
+func (s *Input) GetInputInfo() (store *[]models.Input, err error) {
+	inputInfo := new([]models.Input)
+	err = dao.Orm.Find(inputInfo).Error
+	//info, err := json.Marshal(storeInfo)
+	if err != nil {
+		log.Println("[services.GetStoreInfo], err")
+	}
+
+	return inputInfo, err
+}
