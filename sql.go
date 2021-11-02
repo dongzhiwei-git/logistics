@@ -19,14 +19,15 @@ func Init() {
 
 }
 
-//func main() {
-//	Init()
-//	//storeSql()
-//	//input()
-//	output()
-//	//vehicle()
-//
-//}
+func main() {
+	Init()
+	//storeSql()
+	//center()
+	//input()
+	output()
+	//vehicle()
+
+}
 
 func storeSql() {
 	f, err := excelize.OpenFile("data.xlsx")
@@ -42,7 +43,7 @@ func storeSql() {
 		fmt.Println("i", i)
 		data[i].Id = i + 1
 		data[i].Number = row[0]
-		data[i].UserName = row[1]
+		data[i].Area = row[1]
 		data[i].ProductName = row[2]
 		NeedNum, _ := strconv.Atoi(row[3])
 		data[i].NeedSum = NeedNum
@@ -63,12 +64,12 @@ func center() {
 		return
 	}
 	data := make([]models.CenterInfo, 4)
-	rows, err := f.GetRows("中心到用户")
+	rows, err := f.GetRows("配送中心到用户")
 	for i, row := range rows {
 		fmt.Println("i", i)
 		data[i].Id = i + 1
 		data[i].Number = row[0]
-		data[i].Area = row[1]
+		data[i].UserName = row[1]
 		data[i].ProductName = row[2]
 		NeedNum, _ := strconv.Atoi(row[3])
 		data[i].NeedSum = NeedNum
@@ -132,7 +133,7 @@ func output() {
 		data[i].OrderNum = row[1]
 		orderSum, _ := strconv.Atoi(row[2])
 		data[i].OrderSum = orderSum
-		data[i].OrderNum = row[3]
+		data[i].OrderCustomer = row[3]
 		data[i].OrderCustomerID = row[4]
 		data[i].ToArea = row[5]
 		data[i].ArriveTime = row[6]

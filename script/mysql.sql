@@ -106,6 +106,7 @@ CREATE TABLE `center_to_customer`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='分仓到客户';
 
+# 入库表
 CREATE TABLE `purchase`
 
 (
