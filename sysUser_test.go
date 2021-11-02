@@ -21,7 +21,7 @@ func TestCreateSysUser(t *testing.T) {
 
 }
 
-func TestGetSysInfo(t *testing.T){
+func TestGetSysInfo(t *testing.T) {
 	if err := internal.Init(); err != nil {
 		log.Println("Init failed." + err.Error())
 		return

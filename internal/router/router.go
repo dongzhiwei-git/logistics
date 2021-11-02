@@ -32,7 +32,7 @@ func InitRouter() {
 		admin.GET("/get-store-info", api.GetStoreInfo)
 		admin.GET("/get-center-info", api.GetCenterInfo)
 		admin.GET("/get-input-info", api.GetInputInfo)
-		admin.GET("/Query_In/",api.QueryInput)
+		admin.GET("/get-output-info", api.GetOutputInfo)
 	}
 
 	// setup listen

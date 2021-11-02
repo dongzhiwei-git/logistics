@@ -18,10 +18,14 @@ func Init() {
 	}
 
 }
+
 //func main() {
 //	Init()
 //	//storeSql()
-//	input()
+//	//input()
+//	output()
+//	//vehicle()
+//
 //}
 
 func storeSql() {
@@ -105,6 +109,69 @@ func input() {
 
 	center := new(services.Input)
 	err = center.CreateInputInfo(data)
+	if err != nil {
+		fmt.Println(err, 123)
+	}
+	fmt.Println(data)
+}
+
+// 出库表
+func output() {
+	f, err := excelize.OpenFile("data.xlsx")
+	if err != nil {
+		println(err.Error())
+		fmt.Println("er")
+		return
+	}
+	data := make([]models.Output, 4)
+	rows, err := f.GetRows("物流端")
+	for i, row := range rows {
+		fmt.Println("i", i)
+		data[i].Id = i
+		data[i].ProductName = row[0]
+		data[i].OrderNum = row[1]
+		orderSum, _ := strconv.Atoi(row[2])
+		data[i].OrderSum = orderSum
+		data[i].OrderNum = row[3]
+		data[i].OrderCustomerID = row[4]
+		data[i].ToArea = row[5]
+		data[i].ArriveTime = row[6]
+		data[i].TradeStatus = row[7]
+	}
+	println()
+
+	output := new(services.Output)
+	err = output.CreateOutputInfo(data)
+	if err != nil {
+		fmt.Println(err, 123)
+	}
+	fmt.Println(data)
+}
+
+// 车辆表
+func vehicle() {
+	f, err := excelize.OpenFile("data.xlsx")
+	if err != nil {
+		println(err.Error())
+		fmt.Println("er")
+		return
+	}
+	data := make([]models.Vehicle, 4)
+	rows, err := f.GetRows("车辆情况")
+	for i, row := range rows {
+		fmt.Println("i", i)
+		data[i].Id = i
+		data[i].VehicleNum = row[0]
+		data[i].ViSeverCondition = row[1]
+
+		data[i].ViPosition = row[2]
+		data[i].ViLoadWeight = row[3]
+		data[i].ViTransitValue = row[4]
+	}
+	println()
+
+	vehicle := new(services.Vehicle)
+	err = vehicle.CreateVehicleInfo(data)
 	if err != nil {
 		fmt.Println(err, 123)
 	}
