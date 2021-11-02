@@ -121,4 +121,8 @@ func GetInputInfo(ctx *gin.Context) {
 	return
 }
 
+func QueryInput(ctx *gin.Context)  {
+	
+}
+
 
