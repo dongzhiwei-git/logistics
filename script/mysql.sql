@@ -150,3 +150,98 @@ CREATE TABLE `vehicle`
     UNIQUE KEY `uk_vehicle_num` (`vehicle_num`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='车辆表';
+
+
+# 配送表
+CREATE TABLE `distribution`
+(
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `position`     varchar(30)         NOT NULL DEFAULT '' COMMENT '所处位置',
+    `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `product_sum`  int unsigned        NOT NULL COMMENT '库存数量',
+    `product_type` varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
+    `user_name`    varchar(30)         NOT NULL DEFAULT '' COMMENT '负责人人名称',
+    `tel`          varchar(20)         NOT NULL DEFAULT '' COMMENT '联系电话',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='配送表';
+
+#总仓信息表
+CREATE TABLE `warehouse`
+(
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `stock_sum`    int unsigned        NOT NULL COMMENT '库存数量',
+    `user_name`    varchar(30)         NOT NULL DEFAULT '' COMMENT '负责人人名称',
+    `tel`          varchar(20)         NOT NULL DEFAULT '' COMMENT '联系电话',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='总仓信息表';
+
+# 客户信息表
+CREATE TABLE `customer`
+(
+    `id`               bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `user_name`        varchar(30)         NOT NULL DEFAULT '' COMMENT '客户名称',
+    `order_num`        varchar(30)         NOT NULL DEFAULT '' COMMENT '订单编号',
+    `product_name`     varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `need_sum`         int unsigned        NOT NULL COMMENT '所需数量',
+    `product_type`     varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
+    `position`         varchar(30)         NOT NULL DEFAULT '' COMMENT '所处位置',
+    `responsible_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '负责人',
+    `tel`              varchar(20)         NOT NULL DEFAULT '' COMMENT '联系电话',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='客户信息表';
+
+# 采购端信息表
+CREATE TABLE `procurement`
+(
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `position`     varchar(30)         NOT NULL DEFAULT '' COMMENT '所在区域',
+    `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `order_sum`    int unsigned        NOT NULL COMMENT '订货量',
+    `left_sum`     int unsigned        NOT NULL COMMENT '剩余库存',
+    `product_type` varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
+    `need_level`   varchar(8)          NOT NULL DEFAULT '' COMMENT '采购预警',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='采购端信息表';
+
+# 库存信息表
+CREATE TABLE `stock`
+(
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `left_sum`     int unsigned        NOT NULL COMMENT '剩余库存',
+    `product_type` varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='库存信息表';
+
+# 配送车辆表
+CREATE TABLE `vehicle`
+(
+    `id`                bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `distribution_num`  varchar(30)         NOT NULL DEFAULT '' COMMENT '配送编号',
+    `vehicle_num`       varchar(30)         NOT NULL DEFAULT '' COMMENT '车辆编号',
+    `customer_name`     varchar(30)         NOT NULL DEFAULT '' COMMENT '订单客户名',
+    `distribution_area` varchar(30)         NOT NULL DEFAULT '' COMMENT '配送地点',
+    `product_name`      varchar(30)         NOT NULL DEFAULT '' COMMENT '采购名称',
+    `product_sum`       int unsigned        NOT NULL COMMENT '备件数量',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='配送车辆表';
+
+# 备件表
+CREATE TABLE `product`
+(
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `product_num`  varchar(30)         NOT NULL DEFAULT '' COMMENT '备件编号',
+    `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `product_type` varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
+    `product_sum`  int unsigned        NOT NULL COMMENT '备件数量',
+    `in_date`      time                NOT NULL   COMMENT '入库日期',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='备件表';
