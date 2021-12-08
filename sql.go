@@ -19,16 +19,16 @@ func Init() {
 
 }
 
-func main() {
-	Init()
-	//storeSql()
-	//center()
-	//input()
-	//output()
-	//vehicle()
-	productLevel()
-
-}
+//func main() {
+//	Init()
+//	//storeSql()
+//	//center()
+//	//input()
+//	//output()
+//	//vehicle()
+//	productLevel()
+//
+//}
 
 func storeSql() {
 	f, err := excelize.OpenFile("data.xlsx")

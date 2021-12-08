@@ -146,3 +146,58 @@ func GetOutputInfo(ctx *gin.Context) {
 
 	return
 }
+
+//	得到备件等级info
+func GetProductLevel(ctx *gin.Context) {
+	level := new(services.ProductLevel)
+	levelInfo, err := level.GetProductLevel()
+	if err != nil {
+		fmt.Printf("[api.GetInputInfo], err: %v", err)
+
+		return
+	}
+
+	log.Println(levelInfo)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"date":   levelInfo,
+	})
+}
+
+//	更新备件等级信息
+func UpdateProductLevel(ctx *gin.Context) {
+	//Parameter parsing
+	info := models.ProductLevel{}
+	err := ctx.ShouldBindJSON(&info)
+	if info.Id <= 0 {
+		ctx.JSON(http.StatusOK, "id不能小于1")
+		return
+	}
+	if info.ForwardDate <= 0 {
+		ctx.JSON(http.StatusOK, "ForwardDate不能小于1")
+		return
+	}
+	if info.TotalAmount <= 0 {
+		ctx.JSON(http.StatusOK, "TotalAmount不能小于1")
+		return
+	}
+	if err != nil {
+		fmt.Printf("[api.UpdateProductLevel], Parameter parsing error")
+	}
+
+	level := new(services.ProductLevel)
+	productLevel, err := level.UpdateProductLevel(info.Id, info.TotalAmount, info.General, info.ForwardDate)
+	if err != nil {
+		fmt.Printf("[api.UpdateProductLevel], err: %v", err)
+
+		return
+	}
+
+	log.Println(productLevel)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"level":  productLevel,
+	})
+
+	return
+}

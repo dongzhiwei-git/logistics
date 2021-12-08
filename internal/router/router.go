@@ -33,6 +33,9 @@ func InitRouter() {
 		admin.GET("/get-center-info", api.GetCenterInfo)
 		admin.GET("/get-input-info", api.GetInputInfo)
 		admin.GET("/get-output-info", api.GetOutputInfo)
+		// 获取备件等级表
+		admin.GET("/get-prolevel-info", api.GetProductLevel)
+		admin.POST("update-level", api.UpdateProductLevel)
 	}
 
 	// setup listen

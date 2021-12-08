@@ -37,3 +37,20 @@ func TestGetSysInfo(t *testing.T) {
 
 	fmt.Println(sysUserInfo)
 }
+
+func TestGetProductLevel(t *testing.T) {
+	if err := internal.Init(); err != nil {
+		log.Println("Init failed." + err.Error())
+		return
+	}
+
+	level := new(services.ProductLevel)
+	levelInfo, err := level.GetProductLevel()
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(levelInfo)
+}
