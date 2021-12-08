@@ -24,8 +24,9 @@ func main() {
 	//storeSql()
 	//center()
 	//input()
-	output()
+	//output()
 	//vehicle()
+	productLevel()
 
 }
 
@@ -36,7 +37,7 @@ func storeSql() {
 		fmt.Println("er")
 		return
 	}
-	data := make([]models.StoreInfo, 4)
+	data := make([]models.StoreInfo, 144)
 
 	rows, err := f.GetRows("总仓到配送中心")
 	for i, row := range rows {
@@ -173,6 +174,33 @@ func vehicle() {
 
 	vehicle := new(services.Vehicle)
 	err = vehicle.CreateVehicleInfo(data)
+	if err != nil {
+		fmt.Println(err, 123)
+	}
+	fmt.Println(data)
+}
+
+func productLevel() {
+	f, err := excelize.OpenFile("data.xlsx")
+	if err != nil {
+		println(err.Error())
+		fmt.Println("er")
+		return
+	}
+	data := make([]models.ProductLevel, 166)
+	rows, err := f.GetRows("备件等级")
+	for i, row := range rows {
+		fmt.Println("i", i)
+		data[i].Id = i
+		data[i].ProductName = row[0]
+		data[i].TotalAmount, _ = strconv.ParseInt(row[1], 10, 64)
+		data[i].General, _ = strconv.ParseInt(row[2], 10, 64)
+		data[i].ForwardDate, _ = strconv.ParseInt(row[3], 10, 64)
+	}
+	println()
+
+	level := new(services.ProductLevel)
+	err = level.CreateLevelInfo(data)
 	if err != nil {
 		fmt.Println(err, 123)
 	}

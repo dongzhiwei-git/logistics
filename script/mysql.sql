@@ -245,3 +245,16 @@ CREATE TABLE `product`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='备件表';
+
+#备件等级控制
+
+CREATE TABLE `ctr_level`
+(
+    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `product_name` varchar(100)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `total_amount` bigint(20),
+    `general` bigint(20),
+    `forward_date` bigint(20),
+    PRIMARY KEY (`id`)
+)ENGINE = InnoDB
+ DEFAULT CHARSET = utf8mb4 COMMENT ='备件等级控制表';
