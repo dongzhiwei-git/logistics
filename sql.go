@@ -19,16 +19,16 @@ func Init() {
 
 }
 
-//func main() {
-//	Init()
-//	//storeSql()
-//	//center()
-//	//input()
-//	//output()
-//	//vehicle()
-//	productLevel()
-//
-//}
+func main() {
+	Init()
+	//storeSql()
+	//center()
+	//input()
+	//output()
+	//vehicle()
+	productLevel()
+
+}
 
 func storeSql() {
 	f, err := excelize.OpenFile("data.xlsx")
@@ -196,6 +196,7 @@ func productLevel() {
 		data[i].TotalAmount, _ = strconv.ParseInt(row[1], 10, 64)
 		data[i].General, _ = strconv.ParseInt(row[2], 10, 64)
 		data[i].ForwardDate, _ = strconv.ParseInt(row[3], 10, 64)
+		data[i].ProLevel = row[4]
 	}
 	println()
 

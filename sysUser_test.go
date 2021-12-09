@@ -54,3 +54,20 @@ func TestGetProductLevel(t *testing.T) {
 
 	fmt.Println(levelInfo)
 }
+
+func TestUpdateProductLevel(t *testing.T) {
+	if err := internal.Init(); err != nil {
+		log.Println("Init failed." + err.Error())
+		return
+	}
+
+	level := new(services.ProductLevel)
+	levelInfo, err := level.UpdateProductLevel(1, 2151380, 1, 72)
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(levelInfo)
+}

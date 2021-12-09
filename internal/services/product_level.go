@@ -40,7 +40,7 @@ func (pl *ProductLevel) UpdateProductLevel(id int, totalAmount, general, forward
 		return "", err
 	}
 	var levelProductInfo []models.ProductLevel
-	err = dao.Orm.Find(levelProductInfo).Error
+	err = dao.Orm.Find(&levelProductInfo).Error
 	if err != nil {
 		log.Println("Find error")
 	}
@@ -58,12 +58,13 @@ func (pl *ProductLevel) UpdateProductLevel(id int, totalAmount, general, forward
 	generalFloat := float64(general) / float64(generalSum)
 	forward := float64(forwardDate) / float64(forwardSum)
 	sum := 0.65*amount + 0.25*generalFloat + 0.1*forward
+	log.Println("sum = ", sum)
 	if sum > 0.03 {
 		return "A1", nil
-	} else if sum > 20 {
+	} else if sum > 0.02 {
 		return "A1", nil
 
-	} else if sum > 10 {
+	} else if sum > 0.01 {
 		return "B", nil
 	} else {
 		return "C", nil

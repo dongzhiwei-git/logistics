@@ -255,6 +255,7 @@ CREATE TABLE `ctr_level`
     `total_amount` bigint(20),
     `general` bigint(20),
     `forward_date` bigint(20),
+    `pro_level` char,
     PRIMARY KEY (`id`)
 )ENGINE = InnoDB
  DEFAULT CHARSET = utf8mb4 COMMENT ='备件等级控制表';

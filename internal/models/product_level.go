@@ -6,6 +6,7 @@ type ProductLevel struct {
 	TotalAmount int64  `gorm:"total_amount" json:"total_amount"`
 	General     int64  `gorm:"general" json:"general"`
 	ForwardDate int64  `gorm:"forward_date"  json:"forward_date"`
+	ProLevel    string `gorm:"pro_level" json:"pro_level"`
 }
 
 func (ProductLevel) TableName() string {
