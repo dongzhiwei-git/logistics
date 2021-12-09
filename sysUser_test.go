@@ -71,3 +71,20 @@ func TestUpdateProductLevel(t *testing.T) {
 
 	fmt.Println(levelInfo)
 }
+
+func TestGetCtrStockInfo(t *testing.T) {
+	if err := internal.Init(); err != nil {
+		log.Println("Init failed." + err.Error())
+		return
+	}
+
+	level := new(services.CtrStock)
+	levelInfo, err := level.GetCtrStockInfo("A1")
+	if err != nil {
+		fmt.Printf("[api.GetStoreInfo], err: %v", err)
+
+		return
+	}
+
+	fmt.Println(levelInfo)
+}

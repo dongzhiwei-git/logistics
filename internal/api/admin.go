@@ -169,7 +169,14 @@ func UpdateProductLevel(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.ProductLevel{}
 	err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error: %v", err)
+		return
+	}
+	fmt.Println(info)
 	if info.Id <= 0 {
+		ctx.JSON(http.StatusOK, "id不能小于1")
 		ctx.JSON(http.StatusOK, "id不能小于1")
 		return
 	}
@@ -187,6 +194,7 @@ func UpdateProductLevel(ctx *gin.Context) {
 
 	level := new(services.ProductLevel)
 	productLevel, err := level.UpdateProductLevel(info.Id, info.TotalAmount, info.General, info.ForwardDate)
+	level.UpdateLevel(productLevel, info.Id)
 	if err != nil {
 		fmt.Printf("[api.UpdateProductLevel], err: %v", err)
 
@@ -200,4 +208,30 @@ func UpdateProductLevel(ctx *gin.Context) {
 	})
 
 	return
+}
+
+//等到库存控制信息
+func GetCtrInfo(ctx *gin.Context) {
+	//Parameter parsing
+	info := models.CtrStock{}
+	err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error: %v", err)
+		return
+	}
+
+	ctr := new(services.CtrStock)
+	ctrStock, err := ctr.GetCtrStockInfo(info.ProductNum)
+	if err != nil {
+		fmt.Printf("[api.UpdateProductLevel], err: %v", err)
+
+		return
+	}
+	//err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"level":  ctrStock,
+	})
 }

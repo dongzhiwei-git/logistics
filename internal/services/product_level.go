@@ -71,3 +71,14 @@ func (pl *ProductLevel) UpdateProductLevel(id int, totalAmount, general, forward
 	}
 
 }
+
+func (pl *ProductLevel) UpdateLevel(lev string, id int) {
+	levelInfo := models.ProductLevel{}
+	err := dao.Orm.Model(&levelInfo).Where("id=?", id).Update(models.ProductLevel{
+		ProLevel: lev,
+	}).Error
+
+	if err != nil {
+		log.Println("Find error")
+	}
+}
