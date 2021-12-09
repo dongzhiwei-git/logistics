@@ -35,7 +35,7 @@ func InitRouter() {
 		admin.GET("/get-output-info", api.GetOutputInfo)
 		// 获取备件等级表
 		admin.GET("/get-prolevel-info", api.GetProductLevel)
-		admin.POST("update-level", api.UpdateProductLevel)
+		admin.POST("/update-level", api.UpdateProductLevel)
 	}
 
 	// setup listen

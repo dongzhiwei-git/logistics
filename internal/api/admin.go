@@ -169,6 +169,10 @@ func UpdateProductLevel(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.ProductLevel{}
 	err := ctx.ShouldBindJSON(&info)
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error")
+	}
+	fmt.Println(info)
 	if info.Id <= 0 {
 		ctx.JSON(http.StatusOK, "id不能小于1")
 		return
