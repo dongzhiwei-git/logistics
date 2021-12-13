@@ -169,11 +169,14 @@ func UpdateProductLevel(ctx *gin.Context) {
 	//Parameter parsing
 	info := models.ProductLevel{}
 	err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
 	if err != nil {
-		fmt.Printf("[api.GetOutputInfo], Parameter parsing error")
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error: %v", err)
+		return
 	}
 	fmt.Println(info)
 	if info.Id <= 0 {
+		ctx.JSON(http.StatusOK, "id不能小于1")
 		ctx.JSON(http.StatusOK, "id不能小于1")
 		return
 	}
