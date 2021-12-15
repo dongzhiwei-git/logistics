@@ -241,7 +241,7 @@ CREATE TABLE `product`
     `product_name` varchar(30)         NOT NULL DEFAULT '' COMMENT '备件名称',
     `product_type` varchar(6)          NOT NULL DEFAULT '' COMMENT '备件类型',
     `product_sum`  int unsigned        NOT NULL COMMENT '备件数量',
-    `in_date`      time                NOT NULL   COMMENT '入库日期',
+    `in_date`      time                NOT NULL COMMENT '入库日期',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='备件表';
@@ -250,12 +250,22 @@ CREATE TABLE `product`
 
 CREATE TABLE `ctr_level`
 (
-    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `product_name` varchar(100)         NOT NULL DEFAULT '' COMMENT '备件名称',
+    `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `product_name` varchar(100)        NOT NULL DEFAULT '' COMMENT '备件名称',
     `total_amount` bigint(20),
-    `general` bigint(20),
+    `general`      bigint(20),
     `forward_date` bigint(20),
-    `pro_level` char,
+    `pro_level`    char,
     PRIMARY KEY (`id`)
-)ENGINE = InnoDB
- DEFAULT CHARSET = utf8mb4 COMMENT ='备件等级控制表';
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='备件等级控制表';
+
+CREATE TABLE `forecast`
+(
+    `product_num`    char(10) NOT NULL,
+    `order_quantity` bigint(20),
+    `safe_stock`     bigint(20),
+    `max_stock`      bigint(20),
+    PRIMARY KEY (`product_num`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='备件等级控制表';
