@@ -208,3 +208,29 @@ func UpdateProductLevel(ctx *gin.Context) {
 
 	return
 }
+
+//等到库存控制信息
+func GetCtrInfo(ctx *gin.Context) {
+	//Parameter parsing
+	info := models.CtrStock{}
+	err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
+	if err != nil {
+		fmt.Printf("[api.GetOutputInfo], Parameter parsing error: %v", err)
+		return
+	}
+
+	ctr := new(services.CtrStock)
+	ctrStock, err := ctr.GetCtrStockInfo(info.ProductNum)
+	if err != nil {
+		fmt.Printf("[api.UpdateProductLevel], err: %v", err)
+
+		return
+	}
+	//err := ctx.ShouldBindJSON(&info)
+	fmt.Println("00000000", info, ctx)
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"level":  ctrStock,
+	})
+}
