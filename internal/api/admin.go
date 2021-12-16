@@ -194,6 +194,7 @@ func UpdateProductLevel(ctx *gin.Context) {
 
 	level := new(services.ProductLevel)
 	productLevel, err := level.UpdateProductLevel(info.Id, info.TotalAmount, info.General, info.ForwardDate)
+	level.UpdateLevel(productLevel, info.Id)
 	if err != nil {
 		fmt.Printf("[api.UpdateProductLevel], err: %v", err)
 
